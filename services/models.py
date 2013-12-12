@@ -78,11 +78,12 @@ class Service(models.Model):
             cur.execute("SELECT id FROM node_classes WHERE name = %s LIMIT 1" % conn.escape(self.service_template.service_template_name))
             r2 = cur.fetchone()
             cur.close()
-            # create
+            # delete
             cur = conn.cursor()
             query = 'DELETE FROM node_class_memberships WHERE node_id = "' + str(r1[0]) + '" and node_class_id =  "' + str(r2[0]) + '"'
             cur.execute(query)
             #cur.execute(" id FROM nodes_classes WHERE name = %s LIMIT 1" % conn.escape(self.service_template.service_template_name))
+            cur.close()
             conn.commit()
         finally:
             if cur:

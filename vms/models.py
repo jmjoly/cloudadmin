@@ -97,6 +97,16 @@ class Vm(models.Model):
         cur = None
         conn = pymysql.connect(host=MYSQL_HOST, port=MYSQL_PORT, user=MYSQL_USER, passwd=MYSQL_PASSWD, db=MYSQL_DASHBOARD_DB)
         try:
+            # get vm id
+            cur = conn.cursor()
+            cur.execute("SELECT id FROM nodes WHERE name = %s LIMIT 1" % conn.escape(self.vm_name))
+            r = cur.fetchone()
+            cur.close()
+            # Delete
+            cur = conn.cursor()
+            query = 'DELETE FROM node_class_memberships WHERE node_id = "' + str(r[0]) + '"'
+            cur.execute(query)
+            cur.close()
             cur = conn.cursor()
             query = 'DELETE FROM nodes WHERE name = "' + self.vm_name + '"'
             cur.execute(query)
