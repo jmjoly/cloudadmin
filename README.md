@@ -1,9 +1,7 @@
-cloudadmin
+CloudAdmin
 ==========
 
-Cloud Administration Software
-
-Cloudadmin is a draft implementation of a cloud management
+CloudAdmin is a draft implementation of a cloud management
 webservice, written in Django.
 
 **Prerequisites:**
