@@ -6,7 +6,7 @@ from vm.models import Vm
 # XenServer parameters
 XEN_URL       = 'https://192.168.0.17:443/'
 XEN_USER      = 'root'
-XEN_PWD       = 'clperi'
+XEN_PWD       = 'root'
 XEN_TEMPLATE = 'debtest'
 XEN_TEST_VM1 = 'testVm1'
 XEN_TEST_VM2 = 'testVm2'
