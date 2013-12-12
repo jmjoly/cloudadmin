@@ -1,0 +1,8 @@
+<h1>Virtual Mahcines</h1>
+<ul>
+{% for vm in object_list %}
+    <li>{{ vm.vm_name }} - {{ vm.vm_name }}</li>
+{% empty %}
+    <li>No VM yet.</li>
+{% endfor %}
+</ul>
