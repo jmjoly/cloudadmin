@@ -4,7 +4,7 @@ from django.test import TestCase
 from vm.models import Vm
 
 # XenServer parameters
-XEN_URL       = 'https://192.168.0.17:443/'
+XEN_URL       = 'https://10.0.0.1:443/'
 XEN_USER      = 'root'
 XEN_PWD       = 'root'
 XEN_TEMPLATE = 'debtest'
