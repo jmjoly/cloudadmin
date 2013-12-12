@@ -5,7 +5,7 @@ admin.autodiscover()
 
 urlpatterns = patterns('',
     # Examples:
-    # url(r'^$', 'xenadmin.views.home', name='home'),
+    # url(r'^$', 'cloudadmin.views.home', name='home'),
     # url(r'^blog/', include('blog.urls')),
 
     url(r'^vm/', include('vms.urls')),

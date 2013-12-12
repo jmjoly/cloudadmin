@@ -1,28 +1,33 @@
 CloudAdmin
 ==========
 
-CloudAdmin is a draft implementation of a cloud management
-webservice, written in Django.
+CloudAdmin is a draft implementation of a heterogeneous cloud management webservice, written in Python/Django.
 
-**Prerequisites:**
+**Prerequisites**
 
-1. Cloudadmin requires Citrix XenServer 6.2.
-2. Cloudadmin uses Puppet and Puppet-dashboard MySQL database. Follow the instruction from the official manual from http://docs.puppetlabs.com/dashboard/manual/1.2.
+1. Cloudadmin requires Citrix XenServer (tested on Version 6.2).
+2. Cloudadmin uses Puppet and Puppet-dashboard MySQL database (tested on Puppet-Dashboard 1.2). Follow the instruction from the official manual from http://docs.puppetlabs.com/dashboard/manual/1.2.
 3. Cloudadmin relies on Django 1.6 and Python 2.7.
 
-**Installation:**
+**Installation**
 
-1. **VM management**: Install XenAPI pyton library (from deb repositories in Debian or Ubuntu, or pip, or git). Provide your XenServer credentials in vms/models.py.
+1. **VM management**: install XenAPI pyton library (from Debian/Ubuntu repositories, Python Pip, or Git). Provide your XenServer credentials in vms/models.py.
 
-2. **Servive management**: Install pymysql python library (from pip or git). Provide Puppet MySQL database credentials in services/models.py.
+2. **Servive management**: install pymysql python library (from Python Pip or Git repository). Provide Puppet MySQL database credentials in services/models.py. Add to the [master] section of your puppet.conf, the following statement:
 
-3. **Web GUI**: Install Django 1.6. In application folder, run:
+	storeconfigs=true
+
+3. **Web GUI**: from the application folder, run:
 
         python ./manage.py syncdb
         python ./manage.py runserver
 
 **Use Considerations**
 
-1. Either XenServer or Puppet template creation is not supported yet. VM templates or Puppet modules mut be created before registering the actual name in CloudAdmin.
+1. Access the Web GUI at http://localhost:8000/admin. Currently, the only view available is the administration section.
 
-2. Puppet nodes integration from VM creation on XenServer is not supported yet. The VM public key must registered manually on Puppet Dashboard interface.
+2. Either XenServer or Puppet template creations are not supported yet. VM templates or Puppet modules must be created before registering the actual VM/Module name in CloudAdmin. For instance, in XenServer, you may create a VM named "test", then you may register a VM template named "test" on CloudAdmin.
+
+3. Puppet nodes integration from VM creation on XenServer is not supported yet. The VM public key must manually registered on Puppet Dashboard interface.
+
+4. Just be careful when using the CloudAdmin VM management, you are directly creating/modifying/deleting VMs.
